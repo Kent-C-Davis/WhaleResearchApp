@@ -1,0 +1,36 @@
+.logbook-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid #000;
+}
+
+.form-group textarea {
+    min-height: 100px;
+}
+
+.save-button {
+    margin-top: 20px;
+    padding: 15px;
+    font-size: 1.2rem;
+}

@@ -1,13 +1,20 @@
+# Visual Studio
 .vs/
-bin/
-obj/
-
 *.user
 *.suo
 
+# Build output
+bin/
+obj/
+
+# VS Code
 .vscode/
 
+# MAUI build outputs
 *.apk
 *.aab
+*.ipa
 
+# OS generated files
 .DS_Store
+Thumbs.db

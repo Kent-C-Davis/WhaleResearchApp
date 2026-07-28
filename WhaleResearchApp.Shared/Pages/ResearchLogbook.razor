@@ -3,45 +3,54 @@
 
 <h1>Research Logbook</h1>
 
-<div class="logbook-container">
+<EditForm Model="entry" OnValidSubmit="SaveEntry">
 
-    <div class="form-group">
-        <label>Date</label>
-        <InputDate @bind-Value="entry.TourDate" />
+    <DataAnnotationsValidator />
+
+    <ValidationSummary />
+
+    <div class="logbook-container">
+
+        <div class="form-group">
+            <label>Date</label>
+            <InputDate @bind-Value="entry.TourDate" />
+        </div>
+
+        <div class="form-group">
+            <label>Skipper</label>
+            <InputText @bind-Value="entry.Skipper" />
+        </div>
+
+        <div class="form-group">
+            <label>Researchers</label>
+            <InputText @bind-Value="entry.Researchers" />
+        </div>
+
+        <div class="form-group">
+            <label>Tour Time</label>
+            <input type="time" 
+                @bind="entry.TourTime" />
+        </div>
+
+        <div class="form-group">
+            <label>Sightings</label>
+            <InputTextArea @bind-Value="entry.Sightings" />
+        </div>
+
+        <div class="form-group">
+            <label>Photos Reference</label>
+            <InputText @bind-Value="entry.PhotosReference" />
+        </div>
+
+        <button type="submit" class="save-button">
+            Save Entry
+        </button>
+
+        <p>@saveMessage</p>
     </div>
 
-    <div class="form-group">
-        <label>Skipper</label>
-        <InputText @bind-Value="entry.Skipper" />
-    </div>
+</EditForm>
 
-    <div class="form-group">
-        <label>Researchers</label>
-        <InputText @bind-Value="entry.Researchers" />
-    </div>
-
-    <div class="form-group">
-        <label>Tour Time</label>
-        <input type="time" 
-            @bind="entry.TourTime" />
-    </div>
-
-    <div class="form-group">
-        <label>Sightings</label>
-        <InputTextArea @bind-Value="entry.Sightings" />
-    </div>
-
-    <div class="form-group">
-        <label>Photos Reference</label>
-        <InputText @bind-Value="entry.PhotosReference" />
-    </div>
-
-    <button class="save-button" @onclick="SaveEntry">
-        Save Entry
-    </button>
-
-    <p>@saveMessage</p>
-</div>
 
 @code {
     private LogbookEntry entry = new();

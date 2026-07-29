@@ -1,5 +1,7 @@
 @page "/logbook"
 @using WhaleResearchApp.Shared.Models
+@using WhaleResearchApp.Shared.Services
+@inject ILogbookService LogbookService
 
 <h1>Research Logbook</h1>
 
@@ -42,6 +44,11 @@
             <InputText @bind-Value="entry.PhotosReference" />
         </div>
 
+        <div class="form-group">
+            <label>Newborn Sighted</label>
+            <InputCheckbox @bind-Value="entry.NewbornSighted" />
+        </div>
+
         <button type="submit" class="save-button">
             Save Entry
         </button>
@@ -53,18 +60,18 @@
 
 
 @code {
-    private LogbookEntry entry = new();
+    private LogbookEntry entry = new()
+    {
+        TourDate = DateOnly.FromDateTime(DateTime.Today),
+        TourTime = TimeOnly.FromDateTime(DateTime.Now)
+    };
 
     private string saveMessage = "";
-    //need to change this function to write to file later
-    private void SaveEntry()
+
+    private async Task SaveEntry()
     {
-        System.Diagnostics.Debug.WriteLine($"Saved: TourDate: {entry.TourDate}");
-        System.Diagnostics.Debug.WriteLine($"Saved: Skipper: {entry.Skipper}");
-        System.Diagnostics.Debug.WriteLine($"Saved: Researchers: {entry.Researchers}");
-        System.Diagnostics.Debug.WriteLine($"Saved: TourTime: {entry.TourTime}");
-        System.Diagnostics.Debug.WriteLine($"Saved: Sightings: {entry.Sightings}");
-        System.Diagnostics.Debug.WriteLine($"Saved: PhotosReference: {entry.PhotosReference}");
+        await LogbookService.Save(entry);
+
         saveMessage = "Entry saved successfully!";
     }
 }

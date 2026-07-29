@@ -27,6 +27,9 @@ public class LogbookEntry
 
     public string? PhotosReference { get; set; }
 
+    [Required] 
+    public bool NewbornSighted { get; set; }
+
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;
 
     public DateTimeOffset UpdatedAt { get; set; } = DateTimeOffset.Now;
